@@ -1,0 +1,10 @@
+<jdbc-resource pool-name="connection-poolPasarela" jndi-name="jdbc/pasarela"></jdbc-resource>
+    <jdbc-connection-pool datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" name="connection-poolPasarela" wrap-jdbc-objects="false" connection-validation-method="auto-commit" res-type="javax.sql.DataSource">
+      <property name="URL" value="jdbc:mysql://localhost:3306/pasarelapago?zeroDateTimeBehavior=convertToNull"></property>
+      <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+      <property name="Password" value="root"></property>
+      <property name="portNumber" value="3306"></property>
+      <property name="databaseName" value="pasarelapago"></property>
+      <property name="User" value="root"></property>
+      <property name="serverName" value="localhost"></property>
+    </jdbc-connection-pool>
