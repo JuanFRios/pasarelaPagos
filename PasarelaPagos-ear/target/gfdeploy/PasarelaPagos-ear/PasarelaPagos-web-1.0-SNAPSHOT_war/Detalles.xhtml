@@ -36,7 +36,7 @@
                     <p:inputText id="valorTotal" value="#{pasarelaMBean.transaction.valorTotal}" title="ValorTotal" required="true" requiredMessage="The ValorTotal field is required."/>
                     <p:outputLabel value="FRegistro:" for="FRegistro" />
                     <p:inputText id="FRegistro" value="#{pasarelaMBean.transaction.FRegistro}" title="FRegistro" required="true" requiredMessage="The FRegistro field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                       
                     </p:inputText>
                 </p:panelGrid>
                 <h:commandButton value="Lista de Transacciones" action="#{pasarelaMBean.list()}"/>

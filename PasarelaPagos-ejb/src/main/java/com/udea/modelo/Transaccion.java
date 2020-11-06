@@ -7,6 +7,7 @@ package com.udea.modelo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;

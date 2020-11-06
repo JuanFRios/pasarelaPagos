@@ -18,8 +18,6 @@
             <h:form>
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <p:panelGrid columns="2">
-                    <p:outputLabel value="IdTransaccion:" for="idTransaccion" />
-                    <p:inputText id="idTransaccion" value="#{pasarelaMBean.transaction.idTransaccion}" title="IdTransaccion" required="true" requiredMessage="The IdTransaccion field is required."/>
                     <p:outputLabel value="IdCliente:" for="idCliente" />
                     <p:inputText id="idCliente" value="#{pasarelaMBean.transaction.idCliente}" title="IdCliente" required="true" requiredMessage="The IdCliente field is required."/>
                     <p:outputLabel value="NombreCliente:" for="nombreCliente" />
@@ -27,22 +25,25 @@
                     <p:outputLabel value="Email:" for="email" />
                     <p:inputText id="email" value="#{pasarelaMBean.transaction.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
                     <p:outputLabel value="NumTCredito:" for="numTCredito" />
-                    <p:inputText id="numTCredito" value="#{pasarelaMBean.transaction.numTCredito}" title="NumTCredito" required="true" requiredMessage="The NumTCredito field is required."/>
+                    <p:inputText id="numTCredito" value="#{pasarelaMBean.transaction.numTCredito}" validator="#{pasarelaMBean.validate}" title="NumTCredito" required="true" requiredMessage="The NumTCredito field is required."/>
                     <p:outputLabel value="CvvTCredito:" for="cvvTCredito" />
                     <p:inputText id="cvvTCredito" value="#{pasarelaMBean.transaction.cvvTCredito}" title="CvvTCredito" required="true" requiredMessage="The CvvTCredito field is required."/>
                     <p:outputLabel value="TipoTCredito:" for="tipoTCredito" />
                     <p:inputText id="tipoTCredito" value="#{pasarelaMBean.transaction.tipoTCredito}" title="TipoTCredito" required="true" requiredMessage="The TipoTCredito field is required."/>
                     <p:outputLabel value="FVenceTCredito:" for="FVenceTCredito" />
-                    <p:inputText id="FVenceTCredito" value="#{pasarelaMBean.transaction.FVenceTCredito}" title="FVenceTCredito" required="true" requiredMessage="The FVenceTCredito field is required."/>
+                    <p:inputText id="FVenceTCredito" value="#{pasarelaMBean.transaction.FVenceTCredito}" title="FVenceTCredito" required="true" requiredMessage="The FVenceTCredito field is required.">
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                    </p:inputText>
                     <p:outputLabel value="ValorTotal:" for="valorTotal" />
-                    <p:inputText id="valorTotal" value="#{pasarelaMBean.transaction.valorTotal}" title="ValorTotal" required="true" requiredMessage="The ValorTotal field is required."/>
-                    <p:outputLabel value="FRegistro:" for="FRegistro" />
-                    <p:inputText id="FRegistro" value="#{pasarelaMBean.transaction.FRegistro}" title="FRegistro" required="true" requiredMessage="The FRegistro field is required.">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    <p:inputText id="valorTotal" value="#{pasarelaMBean.transaction.valorTotal}" title="ValorTotal" required="true" requiredMessage="The ValorTotal field is required.">
+                        <f:validateLongRange minimum="500" maximum="10000"></f:validateLongRange>
+                    </p:inputText>
+                    <p:outputLabel style="display: none" value="FRegistro:" for="FRegistro" />
+                    <p:inputText style="display: none" id="FRegistro" value="#{pasarelaMBean.transaction.FRegistro}" title="FRegistro" required="false" requiredMessage="The FRegistro field is required.">
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
                     </p:inputText>
                 </p:panelGrid>                
-                <h2>Primefaces - Captcha</h2>
-                <p:captcha id="captcha"></p:captcha>
+
                 <br/>
                 <h:commandButton id="enviarPago" value="Enviar Pago" action="#{pasarelaMBean.persist}"/>
             </h:form>         
