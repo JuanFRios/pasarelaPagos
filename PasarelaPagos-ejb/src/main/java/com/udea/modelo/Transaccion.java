@@ -81,21 +81,17 @@ public class Transaccion implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "tipoTCredito")
     private String tipoTCredito;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 7)
     @Column(name = "fVenceTCredito")
-    private String fVenceTCredito;
+    @Temporal(TemporalType.DATE)
+    private Date fVenceTCredito;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Column(name = "valorTotal")
     private BigDecimal valorTotal;
-    @Basic(optional = false)
-    @NotNull
+    @Size(max = 25)
     @Column(name = "fRegistro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fRegistro;
+    private String fRegistro;
 
     public Transaccion() {
     }
@@ -104,7 +100,7 @@ public class Transaccion implements Serializable {
         this.idTransaccion = idTransaccion;
     }
 
-    public Transaccion(Integer idTransaccion, String idCliente, String nombreCliente, String email, String numTCredito, String cvvTCredito, String tipoTCredito, String fVenceTCredito, BigDecimal valorTotal, Date fRegistro) {
+    public Transaccion(Integer idTransaccion, String idCliente, String nombreCliente, String email, String numTCredito, String cvvTCredito, String tipoTCredito, BigDecimal valorTotal) {
         this.idTransaccion = idTransaccion;
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
@@ -112,9 +108,7 @@ public class Transaccion implements Serializable {
         this.numTCredito = numTCredito;
         this.cvvTCredito = cvvTCredito;
         this.tipoTCredito = tipoTCredito;
-        this.fVenceTCredito = fVenceTCredito;
         this.valorTotal = valorTotal;
-        this.fRegistro = fRegistro;
     }
 
     public Integer getIdTransaccion() {
@@ -173,11 +167,11 @@ public class Transaccion implements Serializable {
         this.tipoTCredito = tipoTCredito;
     }
 
-    public String getFVenceTCredito() {
+    public Date getFVenceTCredito() {
         return fVenceTCredito;
     }
 
-    public void setFVenceTCredito(String fVenceTCredito) {
+    public void setFVenceTCredito(Date fVenceTCredito) {
         this.fVenceTCredito = fVenceTCredito;
     }
 
@@ -189,11 +183,11 @@ public class Transaccion implements Serializable {
         this.valorTotal = valorTotal;
     }
 
-    public Date getFRegistro() {
+    public String getFRegistro() {
         return fRegistro;
     }
 
-    public void setFRegistro(Date fRegistro) {
+    public void setFRegistro(String fRegistro) {
         this.fRegistro = fRegistro;
     }
 

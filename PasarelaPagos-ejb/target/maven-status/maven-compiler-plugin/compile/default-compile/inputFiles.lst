@@ -1,4 +1,4 @@
-/home/juan/Desktop/PasarelaPagos/PasarelaPagos-ejb/src/main/java/com/udea/session/TransaccionManager.java
-/home/juan/Desktop/PasarelaPagos/PasarelaPagos-ejb/src/main/java/com/udea/session/TransaccionManagerLocal.java
-/home/juan/Desktop/PasarelaPagos/PasarelaPagos-ejb/src/main/java/com/udea/NewSessionBean.java
-/home/juan/Desktop/PasarelaPagos/PasarelaPagos-ejb/src/main/java/com/udea/modelo/Transaccion.java
+/home/juan/Desktop/pasarelaPagos/PasarelaPagos-ejb/src/main/java/com/udea/NewSessionBean.java
+/home/juan/Desktop/pasarelaPagos/PasarelaPagos-ejb/src/main/java/com/udea/session/TransaccionManagerLocal.java
+/home/juan/Desktop/pasarelaPagos/PasarelaPagos-ejb/src/main/java/com/udea/session/TransaccionManager.java
+/home/juan/Desktop/pasarelaPagos/PasarelaPagos-ejb/src/main/java/com/udea/modelo/Transaccion.java
