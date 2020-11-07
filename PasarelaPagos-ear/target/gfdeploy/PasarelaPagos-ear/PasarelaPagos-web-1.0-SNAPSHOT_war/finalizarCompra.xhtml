@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menuView.xhtml">
+
+        </ui:include>
+        <style type="text/css">
+                body .ui-steps .ui-steps-item {
+                    width: 25%;
+                }
+
+                body .ui-state-highlight {
+                    text-shadow: none !important;
+                }
+
+                body .ui-steps.custom {
+                    margin-bottom: 30px;
+                }
+
+                body .ui-steps.custom .ui-steps-item .ui-menuitem-link {
+                    height: 10px;
+                    padding: 0 1em;
+                    overflow: visible;
+                    border: 1px solid #c8c8c8;
+                    display: block;
+                    background-color: #FFFFFF;
+                }
+
+                body .ui-steps.custom .ui-steps-item .ui-menuitem-link .ui-steps-number {
+                    background-color: #0081c2;
+                    color: #FFFFFF;
+                    display: inline-block;
+                    width: 30px;
+                    border-radius: 10px;
+                    margin-top: -10px;
+                    margin-bottom: 10px;
+                    position: relative;
+                    top: -3px;
+                }
+
+                body .ui-steps.custom .ui-steps-item .ui-menuitem-link .ui-steps-title {
+                    margin-top: -6px;
+                }
+
+                body .ui-steps.custom .ui-steps-item.ui-state-highlight .ui-menuitem-link .ui-steps-title {
+                    color: #555;
+                }
+            </style>
+        
+        <h3>Interactive</h3>
+        <p:steps activeIndex="3" styleClass="custom" readonly="false">
+            <p:menuitem style="background-color: #0081c2" value="Infornacion Personal" outcome="/informacionBasica"/>
+            <p:menuitem style="background-color: #0081c2" value="Pago" outcome="/pago"/>
+            <p:menuitem style="background-color: #0081c2" value="Finalizar Pago" url="#"/>
+        </p:steps>
+        
+         <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Resumen pago"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdCliente:" for="idCliente" />
+                    <p:outputLabel id="idCliente" value="#{pasarelaMBean.transaction.idCliente}" title="IdCliente"/>
+                    <p:outputLabel value="NombreCliente:" for="nombreCliente" />
+                    <p:outputLabel id="nombreCliente" value="#{pasarelaMBean.transaction.nombreCliente}" title="NombreCliente" />
+                    <p:outputLabel value="Email:" for="email" />
+                    <p:outputLabel id="email" value="#{pasarelaMBean.transaction.email}" title="Email" />
+                    <p:outputLabel value="ValorTotal:" for="valorTotal" />
+                    <p:outputLabel id="valorTotal" value="#{pasarelaMBean.transaction.valorTotal}" title="ValorTotal" />
+                    <p:outputLabel value="NumTCredito:" for="numTCredito" />
+                    <p:outputLabel id="numTCredito" value="#{pasarelaMBean.transaction.numTCredito}"  title="NumTCredito" />
+                    <p:outputLabel value="CvvTCredito:" for="cvvTCredito" />
+                    <p:outputLabel id="cvvTCredito" value="#{pasarelaMBean.transaction.cvvTCredito}" title="CvvTCredito" />
+                    <p:outputLabel value="TipoTCredito:" for="tipoTCredito" />
+                    <p:outputLabel id="tipoTCredito" value="#{pasarelaMBean.transaction.tipoTCredito}" title="TipoTCredito" />
+                    <p:outputLabel value="FVenceTCredito:" for="FVenceTCredito" />
+                    <p:outputLabel id="FVenceTCredito" value="#{pasarelaMBean.transaction.FVenceTCredito}" title="FVenceTCredito" />                      
+                    
+                    <p:outputLabel style="display: none" value="FRegistro:" for="FRegistro" />
+                    <p:inputText style="display: none" id="FRegistro" value="#{pasarelaMBean.transaction.FRegistro}" title="FRegistro" required="false" requiredMessage="The FRegistro field is required.">
+                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                    </p:inputText>
+                </p:panelGrid>                
+
+                <br/>
+                <h:commandButton id="enviarPago" value="Enviar Pago" action="#{pasarelaMBean.persist}"/>
+            </h:form>         
+
+
+        </f:view>
+    </h:body>
+</html>
+

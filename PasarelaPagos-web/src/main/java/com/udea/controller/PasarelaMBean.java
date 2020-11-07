@@ -11,10 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 
 /**
  *
@@ -39,21 +35,30 @@ public class PasarelaMBean {
         return transactions;
     }
 
-    public void validate(FacesContext arg0, UIComponent arg1, Object arg2)
-            throws ValidatorException {
-        int tipo = Integer.parseInt(((String)arg2).substring(0, 5));
-        if (tipo >= 11111 && tipo <= 22222 ) {
+     
+    public String continuar(){
+        String r = "invalido";
+        String tipo = this.transaction.getNumTCredito().substring(0,5);
+        int tip = Integer.parseInt(tipo);
+        if(tip >=11111 && tip <=22222){
             this.transaction.setTipoTCredito("American Express");
-            throw new ValidatorException(new FacesMessage("Al menos 5 caracteres "));
-            
+            r = "valido";
+        }else if(tip >=33334 && tip <=44444){
+            this.transaction.setTipoTCredito("Diners");
+            r = "valido";
+        }else if(tip >=55555 && tip <=66666){
+            this.transaction.setTipoTCredito("Visa");
+            r = "valido";
+        }else if(tip >=77777 && tip <=88888){
+            this.transaction.setTipoTCredito("Master Card");
+            r = "valido";
         }
+        return r;
     }
+    
 
     public String persist() {
-        transaction.setFRegistro(new SimpleDateFormat("yyyy-MM-dd 'a las' HH:mm:ss").format(new Date()));
-        System.out.println(transaction.getNombreCliente());
-        System.out.println("############################");
-        System.out.println("");
+        transaction.setFRegistro(new SimpleDateFormat("yyyy-MM-dd 'a las' HH:mm:ss").format(new Date()));        
         transaccionManager.guardarTransaccion(transaction);
         return "saved";
     }

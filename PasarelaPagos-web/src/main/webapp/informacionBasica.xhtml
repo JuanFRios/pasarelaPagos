@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menuView.xhtml">
+
+        </ui:include>
+        <style type="text/css">
+                body .ui-steps .ui-steps-item {
+                    width: 25%;
+                }
+
+                body .ui-state-highlight {
+                    text-shadow: none !important;
+                }
+
+                body .ui-steps.custom {
+                    margin-bottom: 30px;
+                }
+
+                body .ui-steps.custom .ui-steps-item .ui-menuitem-link {
+                    height: 10px;
+                    padding: 0 1em;
+                    overflow: visible;
+                    border: 1px solid #c8c8c8;
+                    display: block;
+                    background-color: #FFFFFF;
+                }
+
+                body .ui-steps.custom .ui-steps-item .ui-menuitem-link .ui-steps-number {
+                    background-color: #0081c2;
+                    color: #FFFFFF;
+                    display: inline-block;
+                    width: 30px;
+                    border-radius: 10px;
+                    margin-top: -10px;
+                    margin-bottom: 10px;
+                    position: relative;
+                    top: -3px;
+                }
+
+                body .ui-steps.custom .ui-steps-item .ui-menuitem-link .ui-steps-title {
+                    margin-top: -6px;
+                }
+
+                body .ui-steps.custom .ui-steps-item.ui-state-highlight .ui-menuitem-link .ui-steps-title {
+                    color: #555;
+                }
+            </style>
+        
+        <h3>Interactive</h3>
+        <p:steps activeIndex="2" styleClass="custom" readonly="false">
+            <p:menuitem style="background-color: #0081c2" value="Infornacion Personal" url="#"/>
+            <p:menuitem style="background-color: gray" value="Pago" url="#"/>
+            <p:menuitem style="background-color: gray" value="Finalizar Pago" url="#"/>
+        </p:steps>
+         <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Informacion General"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdCliente:" for="idCliente" />
+                    <p:inputText id="idCliente" value="#{pasarelaMBean.transaction.idCliente}" title="IdCliente" required="true" requiredMessage="The IdCliente field is required."/>
+                    <p:outputLabel value="NombreCliente:" for="nombreCliente" />
+                    <p:inputText id="nombreCliente" value="#{pasarelaMBean.transaction.nombreCliente}" title="NombreCliente" required="true" requiredMessage="The NombreCliente field is required."/>
+                    <p:outputLabel value="Email:" for="email" />
+                    <p:inputText id="email" value="#{pasarelaMBean.transaction.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
+                    
+                    <p:outputLabel value="ValorTotal:" for="valorTotal" />
+                    <p:inputText id="valorTotal" value="#{pasarelaMBean.transaction.valorTotal}" title="ValorTotal" required="true" requiredMessage="The ValorTotal field is required.">
+                        <f:validateLongRange minimum="500" maximum="10000"></f:validateLongRange>
+                    </p:inputText>
+                    
+                </p:panelGrid>                
+
+                <br/>
+                <h:commandButton id="enviarPago" value="Continuar" action="pago.xhtml"/>
+            </h:form>         
+
+
+        </f:view>
+    </h:body>
+    
+</html>
+

@@ -30,11 +30,11 @@ CREATE TABLE `Transaccion` (
   `numTCredito` varchar(20) NOT NULL,
   `cvvTCredito` varchar(3) NOT NULL,
   `tipoTCredito` varchar(50) NOT NULL,
-  `fVenceTCredito` varchar(7) NOT NULL,
+  `fVenceTCredito` date DEFAULT NULL,
   `valorTotal` decimal(20,2) NOT NULL,
-  `fRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fRegistro` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`idTransaccion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `Transaccion` (
 
 LOCK TABLES `Transaccion` WRITE;
 /*!40000 ALTER TABLE `Transaccion` DISABLE KEYS */;
-INSERT INTO `Transaccion` VALUES (1,'1','fhh','juaa','231','232','dshs','28833',238923.00,'2020-11-03 13:08:00');
+INSERT INTO `Transaccion` VALUES (20,'1212','jausd','sdgdf','1111111111','123','American Express','2020-08-07',600.00,'2020-11-06 a las 18:31:38'),(21,'1212','jausd','sdgdf','1111111111','123','American Express','2020-08-07',600.00,'2020-11-06 a las 18:32:00'),(22,'1223','23','3322','111111','111','American Express','2020-07-06',2342.00,'2020-11-06 a las 18:58:00'),(23,'1223','23','3322','112345686050','123','American Express','2020-07-06',600.00,'2020-11-06 a las 19:16:14');
 /*!40000 ALTER TABLE `Transaccion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-05 16:58:23
+-- Dump completed on 2020-11-06 19:24:06

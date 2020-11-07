@@ -23,14 +23,9 @@
                         <h:commandLink action="#{pasarelaMBean.showDetails(item)}"
                                        value="#{item.idTransaccion}"/>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdTransaccion"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idTransaccion}"/>
-                    </p:column>
+                    
                     <p:column headerText="Qr Code" >    
-                        <p:barcode value="#{item.idTransaccion}  #{item.email}  #{item.numTCredito}" 
+                        <p:barcode value="#{item.idCliente}  #{item.valorTotal}  #{item.FRegistro}" 
                                    type="qr" height="150px" width="150px" /> 
                     </p:column>
                     <p:column>
@@ -73,7 +68,10 @@
                         <f:facet name="header">
                             <h:outputText value="FVenceTCredito"/>
                         </f:facet>
-                        <h:outputText value="#{item.FVenceTCredito}"/>
+                        <h:outputText value="#{item.FVenceTCredito}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        
                     </p:column>
                     <p:column>
                         <f:facet name="header">
@@ -85,9 +83,8 @@
                         <f:facet name="header">
                             <h:outputText value="FRegistro"/>
                         </f:facet>
-                        <h:outputText value="#{item.FRegistro}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
+                        <h:outputText value="#{item.FRegistro}"/>
+                            
                     </p:column>
                 </p:dataTable>
             </h:form>
