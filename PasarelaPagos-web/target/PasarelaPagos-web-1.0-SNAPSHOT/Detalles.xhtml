@@ -33,7 +33,9 @@
                     <p:outputLabel value="TipoTCredito:" for="tipoTCredito" />
                     <p:outputLabel id="tipoTCredito" value="#{pasarelaMBean.transaction.tipoTCredito}" title="TipoTCredito" />
                     <p:outputLabel value="FVenceTCredito:" for="FVenceTCredito" />
-                    <p:outputLabel id="FVenceTCredito" value="#{pasarelaMBean.transaction.FVenceTCredito}" title="FVenceTCredito" />   
+                    <p:outputLabel id="FVenceTCredito" value="#{pasarelaMBean.transaction.FVenceTCredito}" title="FVenceTCredito" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:outputLabel>
                     <p:outputLabel value="FRegistro:" for="FRegistro" />
                     <p:outputLabel id="FRegistro" value="#{pasarelaMBean.transaction.FRegistro}" title="FRegistro"/>
                     <p:barcode value="#{pasarelaMBean.transaction.idCliente}  #{pasarelaMBean.transaction.valorTotal}  #{pasarelaMBean.transaction.FRegistro}" 
