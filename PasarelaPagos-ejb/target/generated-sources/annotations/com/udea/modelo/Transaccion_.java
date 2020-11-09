@@ -6,14 +6,14 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-11-06T15:42:41")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-11-06T19:34:52")
 @StaticMetamodel(Transaccion.class)
 public class Transaccion_ { 
 
     public static volatile SingularAttribute<Transaccion, Integer> idTransaccion;
     public static volatile SingularAttribute<Transaccion, String> tipoTCredito;
-    public static volatile SingularAttribute<Transaccion, String> fVenceTCredito;
-    public static volatile SingularAttribute<Transaccion, Date> fRegistro;
+    public static volatile SingularAttribute<Transaccion, Date> fVenceTCredito;
+    public static volatile SingularAttribute<Transaccion, String> fRegistro;
     public static volatile SingularAttribute<Transaccion, String> idCliente;
     public static volatile SingularAttribute<Transaccion, String> nombreCliente;
     public static volatile SingularAttribute<Transaccion, String> cvvTCredito;

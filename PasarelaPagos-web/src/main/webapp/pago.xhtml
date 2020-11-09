@@ -6,87 +6,101 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Efectuar pago</title>
     </h:head>
     <h:body>
         <ui:include src="menuView.xhtml">
 
         </ui:include>
-         <style type="text/css">
-                body .ui-steps .ui-steps-item {
-                    width: 25%;
-                }
+        <style type="text/css">
+            body {
+                background-color: #f2f2f2;
+            }
+            body .ui-steps .ui-steps-item {
+                width: 25%;
+            }
 
-                body .ui-state-highlight {
-                    text-shadow: none !important;
-                }
+            body .ui-steps.custom {
+                margin: 30px;
+            }
 
-                body .ui-steps.custom {
-                    margin-bottom: 30px;
-                }
+            body .ui-steps.custom .ui-steps-item .ui-menuitem-link {
+                text-shadow: none !important;
+                height: 10px;
+                font-weight:lighter;
+                padding: 0 1em;
+                overflow: visible;
+                border: 1px solid #c8c8c8;
+                display: block;
+                background-color: #FFFFFF;
+            }
 
-                body .ui-steps.custom .ui-steps-item .ui-menuitem-link {
-                    height: 10px;
-                    padding: 0 1em;
-                    overflow: visible;
-                    border: 1px solid #c8c8c8;
-                    display: block;
-                    background-color: #FFFFFF;
-                }
+            body .ui-steps.custom .ui-steps-item .ui-menuitem-link .ui-steps-number {
+                font-size:150%;
+                background-color: #0081c2;
+                color: #FFFFFF;
+                display: inline-block;
+                width: 30px;
+                border-radius: 5px;
+                margin-top: -10px;
+                margin-bottom: 10px;
+                position: relative;
+                top: -3px;
+            }
 
-                body .ui-steps.custom .ui-steps-item .ui-menuitem-link .ui-steps-number {
-                    background-color: #0081c2;
-                    color: #FFFFFF;
-                    display: inline-block;
-                    width: 30px;
-                    border-radius: 10px;
-                    margin-top: -10px;
-                    margin-bottom: 10px;
-                    position: relative;
-                    top: -3px;
-                }
+            body .ui-steps.custom .ui-steps-item .ui-menuitem-link .ui-steps-title {
+                margin-top: -6px;
+            }
 
-                body .ui-steps.custom .ui-steps-item .ui-menuitem-link .ui-steps-title {
-                    margin-top: -6px;
-                }
+            body .ui-steps.custom .ui-steps-item.ui-state-highlight .ui-menuitem-link .ui-steps-title {
+                color: #555;
+            }
+            .title{
+                font-family: sans-serif;
+                font-weight: 400;
+                font-size: 40px;
+                margin-top: 10px;
+            }
+            .gen-form{
+                text-align: center;
+                margin-top: 70px;
+            }
+            .ui-panelgrid{
+                margin: auto;
+            }
+        </style>
 
-                body .ui-steps.custom .ui-steps-item.ui-state-highlight .ui-menuitem-link .ui-steps-title {
-                    color: #555;
-                }
-            </style>
-        
-        <h3>Interactive</h3>
         <p:steps activeIndex="3" styleClass="custom" readonly="false">
-            <p:menuitem style="background-color: #0081c2" value="Infornacion Personal" outcome="/informacionBasica"/>
+            <p:menuitem style="background-color: #0081c2" value="Información Personal" outcome="/informacionBasica"/>
             <p:menuitem style="background-color: #0081c2" value="Pago" url="#"/>
-            <p:menuitem style="background-color: gray" value="Finalizar Pago" url="#"/>
+            <p:menuitem style="background-color: #f2f2f2" value="Finalizar Pago" url="#"/>
         </p:steps>
-        
-         <f:view>
+
+        <f:view>
 
 
-            <h:form>
-                <h1><h:outputText value="Informacion del pago"/></h1>
+            <h:form class="gen-form">
+                <h1 class="title"><h:outputText value="Información del pago"/></h1>
                 <p:panelGrid columns="2">
-                    <p:outputLabel value="IdCliente:" for="idCliente" />
+                    <p:outputLabel value="Número de identificación:" for="idCliente" />
                     <p:outputLabel id="idCliente" value="#{pasarelaMBean.transaction.idCliente}" title="IdCliente"/>
-                    <p:outputLabel value="NombreCliente:" for="nombreCliente" />
+                    <p:outputLabel value="Nombre completo:" for="nombreCliente" />
                     <p:outputLabel id="nombreCliente" value="#{pasarelaMBean.transaction.nombreCliente}" title="NombreCliente" />
                     <p:outputLabel value="Email:" for="email" />
                     <p:outputLabel id="email" value="#{pasarelaMBean.transaction.email}" title="Email" />
-                    <p:outputLabel value="ValorTotal:" for="valorTotal" />
+                    <p:outputLabel value="Valor total:" for="valorTotal" />
                     <p:outputLabel id="valorTotal" value="#{pasarelaMBean.transaction.valorTotal}" title="ValorTotal" />
-                        
-                    <p:outputLabel value="NumTCredito:" for="numTCredito" />
+
+                    <p:outputLabel value="Número tarjeta de crédito:" for="numTCredito" />
                     <p:inputText id="numTCredito" value="#{pasarelaMBean.transaction.numTCredito}" title="NumTCredito" required="true" requiredMessage="The NumTCredito field is required."/>
-                    <p:outputLabel value="CvvTCredito:" for="cvvTCredito" />
+                    <p:outputLabel value="Código CVV:" for="cvvTCredito" />
                     <p:inputText id="cvvTCredito" value="#{pasarelaMBean.transaction.cvvTCredito}" title="CvvTCredito" required="true" requiredMessage="The CvvTCredito field is required."/>
-                    
-                    <p:outputLabel value="FVenceTCredito:" for="FVenceTCredito" />
+
+                    <p:outputLabel value="Fecha de vencimiento:" for="FVenceTCredito" />
                     <p:inputText id="FVenceTCredito" value="#{pasarelaMBean.transaction.FVenceTCredito}" title="FVenceTCredito" required="true" requiredMessage="The FVenceTCredito field is required.">
                         <f:convertDateTime pattern="yyyy/MM/dd" />
                     </p:inputText>
-                    
+
                     <p:outputLabel style="display: none" value="FRegistro:" for="FRegistro" />
                     <p:inputText style="display: none" id="FRegistro" value="#{pasarelaMBean.transaction.FRegistro}" title="FRegistro" required="false" requiredMessage="The FRegistro field is required.">
                         <f:convertDateTime pattern="yyyy/MM/dd" />
@@ -94,7 +108,7 @@
                 </p:panelGrid>                
 
                 <br/>
-                <h:commandButton id="enviarPago" value="Continuar" action="#{pasarelaMBean.continuar()}"/>
+                <p:commandButton id="enviarPago" value="Continuar" action="#{pasarelaMBean.continuar()}"/>
             </h:form>         
 
 

@@ -6,37 +6,52 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Transacciones</title>
     </h:head>
     <h:body>
+        <style type="text/css">
+            body {
+                background-color: #f2f2f2;
+            }.title{
+                font-family: sans-serif;
+                font-weight: 400;
+                font-size: 40px;
+            }
+            .gen-form{
+                text-align: center;
+            }
+        </style>
         <ui:include src="menuView.xhtml">
 
         </ui:include>
         <f:view>
 
 
-            <h:form>
-                <h1><h:outputText value="List"/></h1>
-                <p:dataTable value="#{pasarelaMBean.transactions}" var="item">
-                    <p:column headerText="IdTransaccion"
+            <h:form class="gen-form">
+                <h1 class="title"><h:outputText value="Lista de transacciones"/></h1>
+                <p:dataTable value="#{pasarelaMBean.transactions}" var="item" paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10,15">
+                    <p:column headerText="ID Transacción"
                               >
                         <h:commandLink action="#{pasarelaMBean.showDetails(item)}"
                                        value="#{item.idTransaccion}"/>
                     </p:column>
-                    
-                    <p:column headerText="Qr Code" >    
+
+                    <p:column headerText="QR" >    
                         <p:barcode value="#{item.idCliente}  #{item.valorTotal}  #{item.FRegistro}" 
                                    type="qr" height="150px" width="150px" /> 
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdCliente"/>
+                            <h:outputText value="ID Cliente"/>
                         </f:facet>
                         <h:outputText value="#{item.idCliente}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="NombreCliente"/>
+                            <h:outputText value="Nombre"/>
                         </f:facet>
                         <h:outputText value="#{item.nombreCliente}"/>
                     </p:column>
@@ -48,43 +63,43 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="NumTCredito"/>
+                            <h:outputText value="Número tarjeta"/>
                         </f:facet>
                         <h:outputText value="#{item.numTCredito}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="CvvTCredito"/>
+                            <h:outputText value="CVV"/>
                         </f:facet>
                         <h:outputText value="#{item.cvvTCredito}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="TipoTCredito"/>
+                            <h:outputText value="Tipo de tarjeta"/>
                         </f:facet>
                         <h:outputText value="#{item.tipoTCredito}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="FVenceTCredito"/>
+                            <h:outputText value="Fecha vencimiento"/>
                         </f:facet>
                         <h:outputText value="#{item.FVenceTCredito}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
-                        
+
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="ValorTotal"/>
+                            <h:outputText value="Valor total"/>
                         </f:facet>
                         <h:outputText value="#{item.valorTotal}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="FRegistro"/>
+                            <h:outputText value="Fecha registro"/>
                         </f:facet>
                         <h:outputText value="#{item.FRegistro}"/>
-                            
+
                     </p:column>
                 </p:dataTable>
             </h:form>
