@@ -97,7 +97,9 @@
                     <p:outputLabel value="Tipo de tarjeta de crédito:" for="tipoTCredito" />
                     <p:outputLabel id="tipoTCredito" value="#{pasarelaMBean.transaction.tipoTCredito}" title="TipoTCredito" />
                     <p:outputLabel value="Fecha de vencimiento:" for="FVenceTCredito" />
-                    <p:outputLabel id="FVenceTCredito" value="#{pasarelaMBean.transaction.FVenceTCredito}" title="FVenceTCredito" />                      
+                    <p:outputLabel id="FVenceTCredito" value="#{pasarelaMBean.transaction.FVenceTCredito}" title="FVenceTCredito" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:outputLabel>                     
 
                     <p:outputLabel style="display: none" value="FRegistro:" for="FRegistro" />
                     <p:inputText style="display: none" id="FRegistro" value="#{pasarelaMBean.transaction.FRegistro}" title="FRegistro" required="false" requiredMessage="The FRegistro field is required.">
